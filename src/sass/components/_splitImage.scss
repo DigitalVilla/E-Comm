@@ -1,0 +1,41 @@
+.split-image {
+	--angle: 15deg;
+	--width: 15rem;
+	--radius: 50%;
+	--displacement: 5%;
+
+	@include flex(center);
+	transform: rotate(var(--angle));
+	width: var(--width);
+
+	div {
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+		position: relative;
+
+		img {
+			@extend .img-contain;
+			border-radius: var(--radius);
+			position: relative;
+		}
+	}
+
+	div:first-child {
+		transform: translateY(calc(var(--displacement) * -1 ));
+
+		img {
+			right: -50%;
+			transform: rotate(calc(var(--angle) * -1 ));
+		}
+	}
+
+	div:last-child {
+		transform: translateY(var(--displacement));
+
+		img {
+			left: -50%;
+			transform: rotate(calc(var(--angle) * -1 ));
+		}
+	}
+}
